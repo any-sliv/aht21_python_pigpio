@@ -1,1 +1,1 @@
-# aht21_python_pigpio
+## AHT21 example for Raspberry Pi using pigpiod and Python
