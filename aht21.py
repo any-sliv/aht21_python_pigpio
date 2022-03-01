@@ -27,8 +27,6 @@ class AHT21:
     _i2cAddr = 0x38
 
     def __init__(self, i2cNumber):
-        """AHT21 constructor. Returns True/False as a result of initalization."""
-
         self.pi = pigpio.pi()
         self.handle = self.pi.i2c_open(i2cNumber, self._i2cAddr)
         assert(self.handle)
@@ -44,7 +42,7 @@ class AHT21:
     def _calibrate(self):
         cal_cmd = [0xbe, 0x08, 0x00]
         self._write(cal_cmd)
-        #todo delay perf counter?? need 50 useconds 
+        #todo delay perf counter?? need 50 us
         time.sleep(0.01)
         self._write([0x71]) # get status register
         res = self._read(self._i2cAddr, 1)
